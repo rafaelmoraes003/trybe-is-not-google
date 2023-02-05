@@ -22,7 +22,6 @@ def exists_word(word, instance: Queue, show_content=False):
         file = instance.search(i)
         file_lines = file["linhas_do_arquivo"]
         occurrences = []
-        add_file = False
 
         add_file = get_line_info(word, file_lines, occurrences, show_content)
 
