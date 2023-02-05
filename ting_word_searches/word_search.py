@@ -1,12 +1,12 @@
 from ting_file_management.queue import Queue
-from ting_file_management.file_process import process
+
 
 def exists_word(word, instance: Queue):
     word_occurrencies = []
 
     for i in range(len(instance)):
         file = instance.search(i)
-        file_lines =  file["linhas_do_arquivo"]
+        file_lines = file["linhas_do_arquivo"]
         occurencies = []
         add_file = False
 
