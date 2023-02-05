@@ -1,7 +1,7 @@
 from ting_file_management.queue import Queue
 
 
-def exists_word(word, instance: Queue):
+def exists_word(word, instance: Queue, show_content=False):
     word_occurrencies = []
 
     for i in range(len(instance)):
@@ -12,7 +12,12 @@ def exists_word(word, instance: Queue):
 
         for j in range(len(file_lines)):
             if word.lower() in file_lines[j].lower():
-                occurencies.append({"linha": j + 1})
+                line_info = {"linha": j + 1}
+
+                if show_content:
+                    line_info["conteudo"] = file_lines[j]
+
+                occurencies.append(line_info)
                 add_file = True
 
         if add_file:
@@ -26,4 +31,5 @@ def exists_word(word, instance: Queue):
 
 
 def search_by_word(word, instance):
-    """Aqui irá sua implementação"""
+    word_occurrencies = exists_word(word, instance, show_content=True)
+    return word_occurrencies
