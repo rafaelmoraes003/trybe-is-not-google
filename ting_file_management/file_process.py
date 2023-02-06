@@ -16,7 +16,7 @@ def process(path_file, instance):
         "linhas_do_arquivo": file_content,
     }
 
-    print(file_info)
+    # print(file_info)
     instance.enqueue(file_info)
 
 
