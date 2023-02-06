@@ -33,3 +33,53 @@ Clone the application using the git clone command. After that, enter the project
  
 2. Install the dependencies
 - `python3 -m pip install -r dev-requirements.txt`
+
+###
+
+<h2 align="left">Using the indexing tool</h2>
+
+Use the `python3 -m ting_word_searches.word_search` command to be able to use the tool.
+
+<h3 align="left">Explanation</h3>
+
+The process function is responsible for adding data from files in the queue (this function takes as arguments `the path of the file with the data` and an `instance of the Queue class`.
+
+After the class instance has passed the `process` function, it can be used in the search tool.
+
+The `exists_word` and `search_by_word` functions take two arguments: `the word to be searched for` and an `instance of the Queue class`.
+
+The return of the `exists_word("sistema", queue_instance)` function is something like:
+
+```Python
+[
+  {
+    "palavra": "sistema",
+    "arquivo": "statics/new_globalized_paradigm-min.txt",
+    "ocorrencias": [
+        {"linha": 12},
+        {"linha": 18}
+     ],
+  },
+]
+```
+
+In the same vein, the return of the `search_by_word("system", queue_instance)` function is something like:
+
+```Python
+[
+  {
+    "palavra": "sistema", 
+    "arquivo": "statics/novo_paradigma_globalizado-min.txt", 
+    "ocorrencias": [
+        {
+          "linha": 12, 
+          "conteudo": "Neste sentido [...] do sistema [...]",
+        }, 
+        {
+          "linha": 18, 
+          "conteudo": "No mundo atual, [...] estabelecimento do sistema [...]",
+        },
+    ],
+  },
+]
+```
