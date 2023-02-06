@@ -63,7 +63,7 @@ The return of the `exists_word("sistema", queue_instance)` function is something
 ]
 ```
 
-In the same vein, the return of the `search_by_word("system", queue_instance)` function is something like:
+Similarly, the return of the `search_by_word("system", queue_instance)` function is something like:
 
 ```Python
 [
