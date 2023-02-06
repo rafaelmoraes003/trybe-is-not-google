@@ -11,6 +11,7 @@ def test_basic_priority_queueing():
         {"qtd_linhas": 4},
         {"qtd_linhas": 2},
         {"qtd_linhas": 8},
+        {"qtd_linhas": 3},
     ]
 
     # ENQUEUE
@@ -18,23 +19,30 @@ def test_basic_priority_queueing():
     for item in items:
         priority_queue.enqueue(item)
 
-    assert len(priority_queue) == 3
-    assert len(priority_queue.high_priority) == 2
+    assert len(priority_queue) == 4
+    assert len(priority_queue.high_priority) == 3
     assert len(priority_queue.regular_priority) == 1
+
+    # ---------------------
+
+    correct_queue = [
+        {"qtd_linhas": 4},
+        {"qtd_linhas": 2},
+        {"qtd_linhas": 3},
+        {"qtd_linhas": 8},
+    ]
+
+    # ---------------------
 
     # SEARCH
 
-    assert priority_queue.search(0) == {"qtd_linhas": 4}
-    assert priority_queue.search(1) == {"qtd_linhas": 2}
-    assert priority_queue.search(2) == {"qtd_linhas": 8}
+    for i in range(len(correct_queue)):
+        assert priority_queue.search(i) == correct_queue[i]
 
     with pytest.raises(IndexError):
         priority_queue.search(100)
 
     # DEQUEUE
 
-    i = 0
-
-    while i < len(priority_queue):
-        assert priority_queue.dequeue() == items[i]
-        i += 1
+    for i in range(len(correct_queue)):
+        assert priority_queue.dequeue() == correct_queue[i]
