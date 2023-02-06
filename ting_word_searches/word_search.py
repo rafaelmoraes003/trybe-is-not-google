@@ -1,4 +1,5 @@
 from ting_file_management.queue import Queue
+from ting_file_management.file_process import process
 
 
 def get_line_info(word, file_lines, occurrences, show_content):
@@ -38,3 +39,17 @@ def exists_word(word, instance: Queue, show_content=False):
 def search_by_word(word, instance):
     word_occurrences = exists_word(word, instance, show_content=True)
     return word_occurrences
+
+if __name__ == "__main__":
+    word = "sistema"
+    project = Queue()
+    process("statics/novo_paradigma_globalizado-min.txt", project)
+
+    word_occurrences = exists_word(word, project)
+    word_occurrences_with_content = search_by_word(word, project)
+
+    print(word_occurrences)
+
+    print("-------------------------------------------")
+
+    print(word_occurrences_with_content)
